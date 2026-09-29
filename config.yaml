@@ -1,0 +1,31 @@
+name: 家庭控制台
+version: 0.1.0
+slug: home_console
+description: 家庭控制台面板，自动发现 HA 房间与设备，提供灯/温控/播放器控制、天气、自动化管理
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: false
+webui: http://[HOST]:[PORT:8765]/
+ports:
+  8765/tcp: 8765
+options:
+  qweather_api_key: ""
+  qweather_api_host: ""
+  qweather_geo_host: ""
+  secret: ""
+schema:
+  qweather_api_key: str?
+  qweather_api_host: str?
+  qweather_geo_host: str?
+  secret: str?
+environment_variables:
+  HOME_CONSOLE_HOST: "0.0.0.0"
+  HOME_CONSOLE_PORT: "8765"
+  HOME_CONSOLE_DATA: "/data"
+  QWEATHER_API_KEY: "{qweather_api_key}"
+  QWEATHER_API_HOST: "{qweather_api_host}"
+  QWEATHER_GEO_HOST: "{qweather_geo_host}"
+  HOME_CONSOLE_SECRET: "{secret}"
